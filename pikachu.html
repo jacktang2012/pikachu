@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pikachu</title>
+	<link rel="stylesheet" href="./pikachu.css">
+	<style> 
+	*{margin:0; padding:0; box-sizing: border-box;}
+	*::after{box-sizing: border-box;}
+	*::before{box-sizing: border-box;}
+	
+	body {
+	background:#FEE433;
+	height:100vh;
+	border:4px solid green;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	}
+	.wrapper {
+	width:100%;
+	height:165px;
+	border:2px solid red;
+	display:block;
+	position:relative;
+	}
+	.nose {
+	width:0px;
+	height:0px;
+	top:28px;
+	margin-left:-12px;
+	left:50%;
+	position: absolute;
+	border:13px solid black;
+	border-radius:50%;
+	border-width:10px 12px;
+	border-color:black transparent transparent transparent;
+	
+	}
+	.eyes {
+	position:absolute;
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	background:#2E2E2E;
+	border:2px solid #000000;	
+	}
+	.eyes::after {
+	content: '';
+	border:2px solid #000000;
+	display: block;
+	background:white;
+	height:24px;
+	width:24px;
+	border-radius:50%;
+	left:7px;
+	top:1px;
+	position: absolute;
+	}
+	.eyes.left {
+	position:absolute;
+	left:540px;
+	}
+	
+	.eyes.right {
+	position:absolute;
+	left:766px;
+	}
+	.faces {
+	position:absolute;
+	width:68px;
+	height:68px;
+	border-radius:50%;
+	background:red;
+	border:2px solid #000000;
+	top:80px;
+	}
+	.faces.left {
+	left:494px;
+	position:absolute;
+	}
+	.faces.right {
+	left:796px;
+	position:absolute;
+	}
+	
+	</style>
+
+</head>
+<body>
+<div class="wrapper">
+  <div class="nose"></div>
+    <div class="eyes left"></div>
+    <div class="eyes right"></div>
+	<div class="faces left"></div>
+	<div class="faces right"></div>
+</div>	
+</body>
+</html>
