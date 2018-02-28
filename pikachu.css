@@ -76,9 +76,8 @@
         width:170px;
         height:60px;
         position: absolute;
-        left:calc(51% - 85px);
+        left:calc(50% - 85px);
         top:0;
-        border:2px solid black;
     }
     .upperlip {
         width:75px;
@@ -88,17 +87,16 @@
         position: absolute;
         top:52px;
         background: #FEE433;
-        border:2px solid black;
     }
 	.upperlip.left {
-        left:-3px;
+        left:7px;
         border-bottom-left-radius:30px 20px;
         transform:rotate(-18deg);
         border-right:none;
         position: absolute;
     }
     .upperlip.right {
-        left:74px;
+        left:84px;
         transform:rotate(18deg); 
         border-bottom-right-radius:30px 20px;
         border-left:none;
@@ -113,7 +111,6 @@
         overflow: hidden;
         height:100px;
         width:300px;
-        border:2px solid black;
      }
     .lowerlip {
         width:200px;
@@ -133,6 +130,6 @@
         background: #FC4A62;
         position: absolute;
         border-radius:50%;
-        left:23%;
+        left:24%;
         bottom:-25px;
      } 
