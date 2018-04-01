@@ -1,9 +1,23 @@
 	*{margin:0; padding:0; box-sizing: border-box;}
 	*::after{box-sizing: border-box;}
 	*::before{box-sizing: border-box;}
+	.preview-wrapper {
+	flex:1;	
+	height:50%;
+	}
+	.code-wrapper {
+	flex:1;  
+	height:50%;  
+	}
 	body {
+		display: flex;
+		flex-direction: column;
+		height:100vh;
+	}
+	
+	.preview {
         background:#FEE433;
-        height:100vh;
+        height:100%;
         display: flex;
         justify-content:center;
         align-items:center;
@@ -13,6 +27,9 @@
         height:165px;
         display: block;
         position:relative;
+	}
+	.wrapper > *:not(:last-child) {
+		z-index: 1;
 	}
 	.nose {
         width:0px;
@@ -104,10 +121,9 @@
     }
     .lowerlip-wrapper {
         bottom:1px;
-        position: absolute; 
+        position: absolute;  
         left:50%; 
         margin-left:-150px;
-        z-index:-1;
         overflow: hidden;
         height:100px;
         width:300px;
