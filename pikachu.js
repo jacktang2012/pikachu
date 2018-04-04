@@ -1,187 +1,147 @@
 !function(){
-  var duration = 50
-  $('.actions').on('click', 'button', function(e){
-    let $button = $(e.currentTarget) // button
-    let speed = $button.attr('data-speed')
-    $button.addClass('active')
-      .siblings('.active').removeClass('active')
-    switch(speed){
-      case 'slow':
-        duration = 100
-        break
-      case 'normal':
-        duration = 50
-        break
-      case 'fast':
-        duration = 10
-        break
-    }
-  })
   function writeCode(prefix, code, fn){
     let container = document.querySelector('#code')
     let styleTag = document.querySelector('#styleTag')
     let n = 0
-    let id
-    id = setTimeout(function run(){
+    let id = setInterval(()=>{
       n+=1
       container.innerHTML = code.substring(0,n)
       styleTag.innerHTML = code.substring(0,n)
-      container.scrollTop = container.scrollHeight
-      if(n < code.length){
-        id = setTimeout(run, duration)
-      }else{
+      if(n >= code.length){
+        window.clearInterval(id)
         fn && fn.call()
       }
-    }, duration)
+    }, 10)
   }
-  let code = `/*
- * 首先，需要准备皮卡丘的皮
- */
-.preview{
-  background: #FEE433;
+  let code = `.preview {
+	background:#FEE433;
+	height:100%;
+	display: flex;
+	justify-content:center;
+	align-items:center;
 }
-/*
- * 接下来，画皮卡丘的鼻子
- */
-.nose{
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 12px;
-  border-color: black transparent transparent;
-  border-radius: 11px;
-  position: absolute;
-  left: 50%;
-  top: 28px;
-  margin-left: -12px;
+.wrapper {
+	width:100%;
+	height:165px;
+	display: block;
+	position:relative;
 }
-/*
- * 接下来，画皮卡丘的眼睛
- */
-.eye{
-  width: 49px;
-  height: 49px;
-  background: #2E2E2E;
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid #000000;
+.nose {
+	width:0px;
+	height:0px;
+	top:28px;
+	position: absolute;
+	margin-left:-12px;
+	left:50%;
+	border:13px solid black;
+	border-radius:50%;
+	border-width:12px;
+	border-color:black transparent transparent transparent;
 }
-/*
- * 眼睛里面的珠子
- */
-.eye::before{
-  content: '';
-  display: block;
-  width: 24px;
-  height: 24px;
-  background: white;
-  position: absolute;
-  border-radius: 50%;
-  left: 6px;
-  top:-1px;
-  border: 2px solid #000;
+.eyes {
+	position:absolute;
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	background:#2E2E2E;
+	border:2px solid #000000;	
 }
-/*
- * 左眼在左边（废话）
- */
-.eye.left{
-  right: 50%;
-  margin-right: 90px;
+.eyes::after {
+	content: '';
+	border:2px solid #000000;
+	display: block;
+	background:white;
+	height:24px;
+	width:24px;
+	border-radius:50%;
+	left:7px;
+	top:1px;
+	position: absolute;
 }
-/*
- * 右眼在右边（废话）
- */
-.eye.right{
-  left: 50%;
-  margin-left: 90px;
+.eyes.left {
+	right:50%;
+	margin-right:90px;
 }
-/*
- * 然后，画皮卡丘的脸
- */
-.face{
-  width: 68px;
-  height: 68px;
-  background: #FC0D1C;
-  border: 2px solid black;
-  border-radius: 50%;
-  position: absolute;
-  top: 85px;
+.eyes.right {
+	left:50%;
+	margin-left:90px;
 }
-/*
- * 将脸放到正确的位置
- */
-.face.left{
-  right: 50%;
-  margin-right: 116px;
+.faces {
+	position:absolute;
+	width:68px;
+	height:68px;
+	border-radius:50%;
+	background:red;
+	border:2px solid #000000;
+	top:85px;
 }
-.face.right{
-  left: 50%;
-  margin-left: 116px;
+.faces.left {
+	right:50%;
+	margin-right:116px;
 }
-/*
- * 上嘴唇
- */
-.upperLip{
-  height: 25px;
-  width: 80px;
-  border: 2px solid black;
-  position: absolute;
-  top: 50px;
-  background: #FDE348;
+.faces.right {
+	left:50%;
+	margin-left:116px;
 }
-.upperLip.left{
-  right: 50%;
-  border-bottom-left-radius: 40px 25px;
-  border-top: none;
-  border-right: none;
-  transform: rotate(-20deg);
+.upperlip-wrapper {
+	width:170px;
+	height:60px;
+	position: absolute;
+	left:calc(50% - 85px);
+	top:0;
 }
-.upperLip.right{
-  left: 50%;
-  border-bottom-right-radius: 40px 25px;
-  border-top: none;
-  border-left: none;
-  transform: rotate(20deg);
+.upperlip {
+	width:75px;
+	height:25px;
+	border:3px solid black;
+	border-top:none;
+	position: absolute;
+	top:52px;
+	background: #FEE433;
 }
-/*
- * 下嘴唇
- */
-.lowerLip-wrapper{
-  bottom: 0;
-  position: absolute;
-  left: 50%;
-  margin-left: -150px;
-  height: 110px;
-  overflow: hidden;
-  width: 300px;
+.upperlip.left {
+	left:7px;
+	border-bottom-left-radius:30px 20px;
+	transform:rotate(-18deg);
+	border-right:none;
+	position: absolute;
 }
-.lowerLip{
-  height: 3500px;
-  width: 300px;
-  background: #990513;
-  border-radius: 200px/2000px;
-  border: 2px solid black;
-  position: absolute;
-  bottom: 0;
-  overflow: hidden;
+.upperlip.right {
+	left:84px;
+	transform:rotate(18deg); 
+	border-bottom-right-radius:30px 20px;
+	border-left:none;
+	position: absolute;
 }
-/*
- * 小舌头
- */
-.lowerLip::after{
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  width: 100px;
-  height: 100px;
-  background: #FC4A62;
-  left: 50%;
-  margin-left: -50px;
-  border-radius: 50px;
-}
-/*
- * 好了，这只皮卡丘送给你
- */
-`
+.lowerlip-wrapper {
+	bottom:1px;
+	position: absolute;  
+	left:50%; 
+	margin-left:-150px;
+	overflow: hidden;
+	height:100px;
+	width:300px;
+ }
+.lowerlip {
+	width:200px;
+	height:3000px;
+	background: #990513;
+	border-radius:150px/1000px;
+	border:2px solid black;
+	position: absolute;
+	bottom:0;
+	right:17%;
+	overflow: hidden;
+} 
+.lowerlip::after {
+	content:'';
+	width:100px;
+	height:100px;
+	background: #FC4A62;
+	position: absolute;
+	border-radius:50%;
+	left:24%;
+	bottom:-25px;
+ }`
   writeCode('',code)
 }.call()
