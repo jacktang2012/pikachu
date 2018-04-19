@@ -7,13 +7,18 @@
       n+=1
       container.innerHTML = code.substring(0,n)
       styleTag.innerHTML = code.substring(0,n)
+	  container.scrollTop = container.scrollHeight
       if(n >= code.length){
         window.clearInterval(id)
         fn && fn.call()
       }
     }, 10)
   }
-  let code = `.preview {
+  let code = `
+/*
+首先需要准备皮卡丘的皮
+*/  
+.preview {
 	background:#FEE433;
 	height:100%;
 	display: flex;
@@ -26,6 +31,9 @@
 	display: block;
 	position:relative;
 }
+/*
+接着画皮卡丘的鼻子
+*/
 .nose {
 	width:0px;
 	height:0px;
@@ -38,6 +46,9 @@
 	border-width:12px;
 	border-color:black transparent transparent transparent;
 }
+/*
+继续画皮卡丘的眼睛哈
+*/
 .eyes {
 	position:absolute;
 	width:50px;
@@ -58,14 +69,23 @@
 	top:1px;
 	position: absolute;
 }
+/*
+这个是左眼睛
+*/
 .eyes.left {
 	right:50%;
 	margin-right:90px;
 }
+/*
+然后是右眼睛
+*/
 .eyes.right {
 	left:50%;
 	margin-left:90px;
 }
+/*
+然后准备小脸蛋
+*/
 .faces {
 	position:absolute;
 	width:68px;
@@ -75,14 +95,23 @@
 	border:2px solid #000000;
 	top:85px;
 }
+/*
+小脸蛋的左边
+*/
 .faces.left {
 	right:50%;
 	margin-right:116px;
 }
+/*
+小脸蛋的右边
+*/
 .faces.right {
 	left:50%;
 	margin-left:116px;
 }
+/*
+准备上嘴唇
+*/
 .upperlip-wrapper {
 	width:170px;
 	height:60px;
@@ -113,6 +142,9 @@
 	border-left:none;
 	position: absolute;
 }
+/*
+继续准备下嘴唇
+*/
 .lowerlip-wrapper {
 	bottom:1px;
 	position: absolute;  
@@ -122,6 +154,9 @@
 	height:100px;
 	width:300px;
  }
+/*
+然后是舌头
+*/
 .lowerlip {
 	width:200px;
 	height:3000px;
@@ -133,15 +168,19 @@
 	right:17%;
 	overflow: hidden;
 } 
+
 .lowerlip::after {
 	content:'';
+	left:24%;
+	bottom:-25px;
 	width:100px;
 	height:100px;
 	background: #FC4A62;
 	position: absolute;
 	border-radius:50%;
-	left:24%;
-	bottom:-25px;
- }`
+ }
+ /*
+皮卡丘画完了
+*/`
   writeCode('',code)
 }.call()
